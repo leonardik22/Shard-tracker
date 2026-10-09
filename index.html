@@ -2,16 +2,16 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#11131b"><meta name="description" content="Локальный трекер осколков и Mercy для RAID: Shadow Legends"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png" type="image/png"><link rel="apple-touch-icon" href="icons/icon-192.png"><title>Shard Tracker 0.8</title>
+<meta name="theme-color" content="#11131b"><meta name="description" content="Локальный трекер осколков и Mercy для RAID: Shadow Legends"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png" type="image/png"><link rel="apple-touch-icon" href="icons/icon-192.png"><title>Shard Tracker 0.9</title>
 <style>
 :root{color-scheme:dark;--bg:#10121a;--panel:#191c27;--panel2:#222635;--line:#303548;--text:#f4f5fb;--muted:#a7aec3;--gold:#d9b86e;--blue:#61a9ff;--purple:#b58aff;--red:#ff805d;--green:#76d4ad}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#202438 0,#10121a 52%);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;color:var(--text);border:1px solid var(--line);background:#292e40;border-radius:12px;padding:11px 13px}button:active{transform:scale(.98)}.wrap{max-width:680px;margin:auto;padding:18px 14px 42px}.head{display:flex;justify-content:space-between;align-items:center;margin:5px 2px 18px}.brand{font-weight:850;letter-spacing:.13em;font-size:20px}.sub{color:var(--muted);font-size:12px;margin-top:3px}.pill{border:1px solid #454052;color:var(--gold);padding:6px 9px;border-radius:999px;font-size:11px;letter-spacing:.06em}.notice{font-size:12px;line-height:1.45;color:var(--muted);background:#171a24;border:1px solid var(--line);padding:11px 12px;border-radius:12px;margin-bottom:14px}.cards{display:grid;gap:12px}.card{background:linear-gradient(145deg,#1d2130,#171a24);border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 8px 24px #0002}.cardtop{display:flex;gap:12px;align-items:center}.shard{width:49px;height:56px;flex:none;filter:drop-shadow(0 4px 7px #0007)}.name{font-size:17px;font-weight:750}.type{font-size:12px;color:var(--muted);margin-top:2px}.total{margin-left:auto;text-align:right}.num{font-size:26px;font-weight:800;line-height:1.1}.small{font-size:11px;color:var(--muted);margin-top:4px}.progresslabel{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:10px;margin:12px 0 4px}.progressline{height:6px;border-radius:99px;background:#33384b;overflow:hidden;margin:0 0 8px}.fill{height:100%;border-radius:99px;width:0;transition:width .2s}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 0 4px}.overview .stat strong{font-size:22px}.typeStats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.typeStat{background:#12151e;border:1px solid var(--line);border-radius:11px;padding:10px}.typeStat strong{display:block;font-size:14px}.typeStat small{display:block;color:var(--muted);font-size:11px;line-height:1.45;margin-top:4px}.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}.stat{background:#11141d99;border-radius:11px;padding:9px 10px}.stat label{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:15px;margin-top:3px}.actions{display:flex;gap:8px;margin-top:12px}.actions button{flex:1;font-weight:650}.plus{background:#30394e;border-color:#46516c}.batch{background:#252938}.section{margin-top:22px}.sectitle{font-weight:750;font-size:17px;margin:0 0 10px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.row>*{flex:1;min-width:100px}input,select{width:100%;background:#11141d;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;min-width:0}.field{margin-bottom:11px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.primary{background:linear-gradient(135deg,#9d7b3d,#d9b86e);border:0;color:#17140e;font-weight:800;width:100%;margin-top:3px}.secondary{background:transparent}.history{display:flex;flex-direction:column;gap:8px}.event{display:flex;gap:10px;align-items:center;background:#12151e;padding:10px;border-radius:11px;font-size:13px}.eventmain{flex:1}.event small{display:block;color:var(--muted);margin-top:3px}.undo{padding:7px 9px;font-size:12px}.empty{color:var(--muted);font-size:13px;padding:12px 0}.foot{color:#858da4;font-size:11px;line-height:1.5;margin-top:16px}.tabs{display:flex;gap:7px;margin:15px 0}.tab{flex:1;text-align:center;font-size:12px;padding:10px 4px;border-radius:10px;background:#191c27;border:1px solid var(--line);color:var(--muted)}.tab.active{color:var(--gold);border-color:#78653f;background:#28251e}@media(min-width:540px){.cards{grid-template-columns:1fr 1fr}.card{padding:16px}.head{margin-bottom:20px}}
 </style>
 </head><body><main class="wrap">
-<header class="head"><div><div class="brand">SHARD TRACKER</div><div class="sub">RAID: Shadow Legends · локальное приложение</div></div><div class="pill">BETA 0.8</div></header>
-<div class="notice">Данные сохраняются в браузере на этом устройстве. Регулярно экспортируй резервную копию и сохраняй файл отдельно. Её можно восстановить через кнопку ниже. Учитываем легендарных героев; для Первозданных — также мифических. Процент не учитывает временные x2-бонусы.</div>
+<header class="head"><div><div class="brand">SHARD TRACKER</div><div class="sub">RAID: Shadow Legends · локальное приложение</div></div><div class="pill">BETA 0.9</div></header>
+<div class="notice">Данные сохраняются в браузере на этом устройстве. Перед восстановлением копии текущие данные автоматически сохраняются в отдельный JSON-файл. Регулярно скачивай резервную копию и храни её отдельно. Учитываем легендарных героев; для Первозданных — также мифических. Процент не учитывает временные x2-бонусы.</div>
 <div class="cards" id="cards"></div>
-<section class="section"><h2 class="sectitle">Общая статистика</h2><div class="panel"><div class="overview" id="overview"></div><div class="sectitle" style="font-size:14px;margin-top:14px">По типам осколков</div><div class="typeStats" id="typeStats"></div><div class="foot">Выпадения считаются по сохранённым записям результатов. Если в одной серии выпало несколько героев, каждый результат нужно записать отдельно, чтобы статистика отражала их все.</div></div></section>
+<section class="section"><h2 class="sectitle">Общая статистика</h2><div class="panel"><div class="overview" id="overview"></div><div class="sectitle" style="font-size:14px;margin-top:14px">По типам осколков</div><div class="typeStats" id="typeStats"></div><div class="foot">Статистика результатов считает каждую сохранённую запись с героем. Если в одной серии выпало несколько героев, создай отдельную запись для каждого героя; так ни один результат не потеряется в статистике. Число открытых осколков при этом указывай только один раз, чтобы не задвоить счётчик.</div></div></section>
 <section class="section"><h2 class="sectitle">Добавить призывы</h2><div class="panel">
 <div class="field"><label for="shardSelect">Тип осколка</label><select id="shardSelect"><option value="ancient">Древние</option><option value="dark">Тёмные (Бездны)</option><option value="sacred">Сакральные</option><option value="primal">Первозданные</option></select></div>
 <div class="row"><div class="field"><label for="quantity">Количество открытых</label><input id="quantity" type="number" min="1" max="10000" value="1" inputmode="numeric"></div><div class="field"><label for="rarity">Результат призыва</label><select id="rarity"><option value="none">Без легендарного</option><option value="legendary">Легендарный</option><option value="mythical">Мифический</option></select></div></div><div class="field" id="positionField" hidden><label for="position">На каком по счёту осколке выпал герой?</label><input id="position" type="number" min="1" max="10000" value="1" inputmode="numeric"></div>
@@ -42,7 +42,7 @@ for(const k of Object.keys(TYPES)){
  delete c.withoutEpic;
 }
 if(!Array.isArray(state.history)) state.history=[];
-function save(){localStorage.setItem('shardTrackerState',JSON.stringify(state));render()}
+function save(){try{localStorage.setItem('shardTrackerState',JSON.stringify(state));}catch(e){alert('Не удалось сохранить данные в памяти браузера. Немедленно скачай резервную копию и освободи место в памяти браузера.');}render()}
 function icon(type){
  const commonStart=`<svg class="shard" viewBox="0 0 64 72" aria-hidden="true">`;
  const icons={
@@ -93,14 +93,14 @@ function render(){
  const total=Object.values(state.counts).reduce((sum,c)=>sum+c.total,0);
  const legendary=state.history.filter(e=>e.rarity==='legendary').length;
  const mythical=state.history.filter(e=>e.rarity==='mythical').length;
- document.getElementById('overview').innerHTML=`<div class="stat"><label>Всего осколков открыто</label><strong>${total.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Записей с легендарным</label><strong>${legendary.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Записей с мифическим</label><strong>${mythical.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Всего записей в истории</label><strong>${state.history.length.toLocaleString('ru-RU')}</strong></div>`;
- document.getElementById('typeStats').innerHTML=Object.keys(TYPES).map(k=>{const c=state.counts[k],lh=state.history.filter(e=>e.type===k&&e.rarity==='legendary').length,mh=state.history.filter(e=>e.type===k&&e.rarity==='mythical').length;return `<div class="typeStat"><strong>${TYPES[k].name}</strong><small>Открыто: ${c.total.toLocaleString('ru-RU')}<br>Без легендарного: ${c.withoutLegendary.toLocaleString('ru-RU')}<br>Записей с легендарным: ${lh}${k==='primal'?`<br>Без мифического: ${c.withoutMythical.toLocaleString('ru-RU')}<br>Записей с мифическим: ${mh}`:''}</small></div>`}).join('');
+ document.getElementById('overview').innerHTML=`<div class="stat"><label>Всего осколков открыто</label><strong>${total.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Легендарных результатов записано</label><strong>${legendary.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Мифических результатов записано</label><strong>${mythical.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Всего записей в истории</label><strong>${state.history.length.toLocaleString('ru-RU')}</strong></div>`;
+ document.getElementById('typeStats').innerHTML=Object.keys(TYPES).map(k=>{const c=state.counts[k],lh=state.history.filter(e=>e.type===k&&e.rarity==='legendary').length,mh=state.history.filter(e=>e.type===k&&e.rarity==='mythical').length;return `<div class="typeStat"><strong>${TYPES[k].name}</strong><small>Открыто: ${c.total.toLocaleString('ru-RU')}<br>Без легендарного: ${c.withoutLegendary.toLocaleString('ru-RU')}<br>Легендарных результатов записано: ${lh}${k==='primal'?`<br>Без мифического: ${c.withoutMythical.toLocaleString('ru-RU')}<br>Мифических результатов записано: ${mh}`:''}</small></div>`}).join('');
  const h=document.getElementById('history');
  if(!state.history.length){h.innerHTML='<div class="empty">Пока нет действий. Добавь первые призывы выше.</div>';return}
  const typeFilter=document.getElementById('historyType').value,rarityFilter=document.getElementById('historyRarity').value;
  const filtered=state.history.filter(e=>(typeFilter==='all'||e.type===typeFilter)&&(rarityFilter==='all'||e.rarity===rarityFilter));
  if(!filtered.length){h.innerHTML='<div class="empty">По выбранным фильтрам записей нет.</div>';return}
- h.innerHTML=filtered.slice(0,30).map(e=>`<div class="event"><div class="eventmain"><strong>${TYPES[e.type].name}: +${e.qty}</strong><small>${new Date(e.time).toLocaleString('ru-RU')} · результат: ${labelRarity(e.rarity)}${e.position&&e.rarity!=='none'&&e.qty>1?` · выпадение на ${e.position}-м`:''}</small></div><button class="undo" onclick="undo('${e.id}')">Отменить</button></div>`).join('');
+ h.innerHTML=filtered.slice(0,30).map(e=>`<div class="event"><div class="eventmain"><strong>${TYPES[e.type].name}: +${e.qty}</strong><small>${new Date(e.time).toLocaleString('ru-RU')} · результат: ${labelRarity(e.rarity)}${e.position&&e.rarity!=='none'&&e.qty>1?` · выпадение на ${e.position}-м из ${e.qty}`:''}${e.qty>1?` · серия ${e.qty} осколков`:''}</small></div><button class="undo" onclick="undo('${e.id}')">Отменить</button></div>`).join('');
 }
 function updateRarityOptions(){
  const type=document.getElementById('shardSelect').value,sel=document.getElementById('rarity'),current=sel.value;
@@ -169,31 +169,49 @@ function normalizedState(raw){
  const out=fresh();
  for(const k of Object.keys(TYPES)){
   const c=source.counts[k];
-  if(c&&typeof c==='object'){
+  if(c!==undefined&&(!c||typeof c!=='object'||Array.isArray(c)))throw new Error('Некорректные счётчики для типа «'+TYPES[k].name+'».');
+  if(c){
    for(const field of ['total','withoutLegendary','withoutMythical']){
-    const n=Number(c[field]??0);if(!Number.isFinite(n)||n<0)throw new Error('В резервной копии есть некорректный счётчик.');
+    const n=Number(c[field]??0);if(!Number.isFinite(n)||n<0||!Number.isSafeInteger(Math.floor(n)))throw new Error('В резервной копии есть некорректный счётчик.');
     out.counts[k][field]=Math.floor(n);
    }
   }
  }
  if(source.history!==undefined&&!Array.isArray(source.history))throw new Error('История в резервной копии имеет неверный формат.');
- out.history=(source.history||[]).filter(e=>e&&TYPES[e.type]&&Number.isFinite(Number(e.qty))&&Number(e.qty)>=1&&['none','legendary','mythical'].includes(e.rarity)).map(e=>({
-  id:String(e.id||Date.now().toString(36)+Math.random().toString(36).slice(2,6)),type:e.type,qty:Math.min(10000,Math.floor(Number(e.qty))),rarity:e.rarity,position:Math.max(1,Math.min(Math.floor(Number(e.qty)),Math.floor(Number(e.position)||Number(e.qty)))),time:Number(e.time)||Date.now(),before:e.before&&typeof e.before==='object'?e.before:undefined,after:e.after&&typeof e.after==='object'?e.after:undefined
- }));
+ out.history=[];
+ for(const e of (source.history||[])){
+  if(!e||typeof e!=='object'||!TYPES[e.type]||!Number.isFinite(Number(e.qty))||!Number.isInteger(Number(e.qty))||Number(e.qty)<1||Number(e.qty)>10000||!['none','legendary','mythical'].includes(e.rarity))throw new Error('В истории найдена некорректная запись. Файл не импортирован, чтобы не потерять данные.');
+  if(e.rarity==='mythical'&&e.type!=='primal')throw new Error('В копии найден мифический результат не для Первозданных. Файл не импортирован.');
+  const qty=Number(e.qty),pos=Number(e.position??qty);
+  if(!Number.isInteger(pos)||pos<1||pos>qty)throw new Error('В истории есть неверный номер выпадения. Файл не импортирован.');
+  const time=Number(e.time);
+  if(!Number.isFinite(time)||time<=0)throw new Error('В истории есть неверная дата. Файл не импортирован.');
+  out.history.push({id:String(e.id||Date.now().toString(36)+Math.random().toString(36).slice(2,6)),type:e.type,qty,rarity:e.rarity,position:pos,time,before:e.before&&typeof e.before==='object'?e.before:undefined,after:e.after&&typeof e.after==='object'?e.after:undefined});
+ }
  return out;
 }
+function downloadBackupFile(prefix='shard-tracker-backup'){
+ const backup={app:'Shard Tracker',version:'0.9',exportedAt:new Date().toISOString(),state};
+ const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=prefix+'-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
 document.getElementById('exportBtn').addEventListener('click',()=>{
- const backup={app:'Shard Tracker',version:'0.8',exportedAt:new Date().toISOString(),state};
- const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='shard-tracker-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
- document.getElementById('backupStatus').textContent='Резервная копия сформирована. Сохрани файл в отдельном месте.';
+ downloadBackupFile();
+ document.getElementById('backupStatus').textContent='Резервная копия сформирована. Проверь папку загрузок и сохрани файл отдельно.';
 });
 document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());
 document.getElementById('importFile').addEventListener('change',async ev=>{
  const file=ev.target.files&&ev.target.files[0];if(!file)return;
  try{
-  const parsed=JSON.parse(await file.text());const restored=normalizedState(parsed);
-  if(!confirm(`Восстановить резервную копию? Текущие счётчики и история будут заменены. В файле записей истории: ${restored.history.length}.`))return;
-  state=restored;save();document.getElementById('backupStatus').textContent='Резервная копия успешно восстановлена.';
+  if(file.size>10*1024*1024)throw new Error('Файл слишком большой (максимум 10 МБ).');
+  const parsed=JSON.parse(await file.text());
+  if(parsed.app&&parsed.app!=='Shard Tracker')throw new Error('Это не резервная копия Shard Tracker.');
+  const restored=normalizedState(parsed);
+  const total=Object.values(restored.counts).reduce((sum,c)=>sum+c.total,0);
+  const message=`Найдено осколков: ${total}. Записей истории: ${restored.history.length}. Текущие данные будут заменены. Перед заменой приложение скачает резервную копию текущих данных. Продолжить?`;
+  if(!confirm(message))return;
+  downloadBackupFile('shard-tracker-before-restore');
+  if(!confirm('Приложение попыталось скачать резервную копию текущих данных. Если файл не появился в загрузках, нажми «Отмена» и сначала скачай копию вручную. Продолжить восстановление и заменить текущие данные?'))return;
+  state=restored;save();document.getElementById('backupStatus').textContent='Копия восстановлена. Проверь папку загрузок: там должна быть резервная копия прежних данных.';
  }catch(err){alert('Не удалось восстановить копию: '+(err.message||'неверный формат файла'));}
  finally{ev.target.value='';}
 });
