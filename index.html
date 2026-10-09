@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#11131b"><meta name="description" content="Локальный трекер осколков и Mercy для RAID: Shadow Legends"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png" type="image/png"><link rel="apple-touch-icon" href="icons/icon-192.png"><title>Shard Tracker 0.8</title>
+<style>
+:root{color-scheme:dark;--bg:#10121a;--panel:#191c27;--panel2:#222635;--line:#303548;--text:#f4f5fb;--muted:#a7aec3;--gold:#d9b86e;--blue:#61a9ff;--purple:#b58aff;--red:#ff805d;--green:#76d4ad}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#202438 0,#10121a 52%);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;color:var(--text);border:1px solid var(--line);background:#292e40;border-radius:12px;padding:11px 13px}button:active{transform:scale(.98)}.wrap{max-width:680px;margin:auto;padding:18px 14px 42px}.head{display:flex;justify-content:space-between;align-items:center;margin:5px 2px 18px}.brand{font-weight:850;letter-spacing:.13em;font-size:20px}.sub{color:var(--muted);font-size:12px;margin-top:3px}.pill{border:1px solid #454052;color:var(--gold);padding:6px 9px;border-radius:999px;font-size:11px;letter-spacing:.06em}.notice{font-size:12px;line-height:1.45;color:var(--muted);background:#171a24;border:1px solid var(--line);padding:11px 12px;border-radius:12px;margin-bottom:14px}.cards{display:grid;gap:12px}.card{background:linear-gradient(145deg,#1d2130,#171a24);border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 8px 24px #0002}.cardtop{display:flex;gap:12px;align-items:center}.shard{width:49px;height:56px;flex:none;filter:drop-shadow(0 4px 7px #0007)}.name{font-size:17px;font-weight:750}.type{font-size:12px;color:var(--muted);margin-top:2px}.total{margin-left:auto;text-align:right}.num{font-size:26px;font-weight:800;line-height:1.1}.small{font-size:11px;color:var(--muted);margin-top:4px}.progresslabel{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:10px;margin:12px 0 4px}.progressline{height:6px;border-radius:99px;background:#33384b;overflow:hidden;margin:0 0 8px}.fill{height:100%;border-radius:99px;width:0;transition:width .2s}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 0 4px}.overview .stat strong{font-size:22px}.typeStats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.typeStat{background:#12151e;border:1px solid var(--line);border-radius:11px;padding:10px}.typeStat strong{display:block;font-size:14px}.typeStat small{display:block;color:var(--muted);font-size:11px;line-height:1.45;margin-top:4px}.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}.stat{background:#11141d99;border-radius:11px;padding:9px 10px}.stat label{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:15px;margin-top:3px}.actions{display:flex;gap:8px;margin-top:12px}.actions button{flex:1;font-weight:650}.plus{background:#30394e;border-color:#46516c}.batch{background:#252938}.section{margin-top:22px}.sectitle{font-weight:750;font-size:17px;margin:0 0 10px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.row>*{flex:1;min-width:100px}input,select{width:100%;background:#11141d;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;min-width:0}.field{margin-bottom:11px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.primary{background:linear-gradient(135deg,#9d7b3d,#d9b86e);border:0;color:#17140e;font-weight:800;width:100%;margin-top:3px}.secondary{background:transparent}.history{display:flex;flex-direction:column;gap:8px}.event{display:flex;gap:10px;align-items:center;background:#12151e;padding:10px;border-radius:11px;font-size:13px}.eventmain{flex:1}.event small{display:block;color:var(--muted);margin-top:3px}.undo{padding:7px 9px;font-size:12px}.empty{color:var(--muted);font-size:13px;padding:12px 0}.foot{color:#858da4;font-size:11px;line-height:1.5;margin-top:16px}.tabs{display:flex;gap:7px;margin:15px 0}.tab{flex:1;text-align:center;font-size:12px;padding:10px 4px;border-radius:10px;background:#191c27;border:1px solid var(--line);color:var(--muted)}.tab.active{color:var(--gold);border-color:#78653f;background:#28251e}@media(min-width:540px){.cards{grid-template-columns:1fr 1fr}.card{padding:16px}.head{margin-bottom:20px}}
+</style>
+</head><body><main class="wrap">
+<header class="head"><div><div class="brand">SHARD TRACKER</div><div class="sub">RAID: Shadow Legends · локальное приложение</div></div><div class="pill">BETA 0.8</div></header>
+<div class="notice">Данные сохраняются в браузере на этом устройстве. Регулярно экспортируй резервную копию и сохраняй файл отдельно. Её можно восстановить через кнопку ниже. Учитываем легендарных героев; для Первозданных — также мифических. Процент не учитывает временные x2-бонусы.</div>
+<div class="cards" id="cards"></div>
+<section class="section"><h2 class="sectitle">Общая статистика</h2><div class="panel"><div class="overview" id="overview"></div><div class="sectitle" style="font-size:14px;margin-top:14px">По типам осколков</div><div class="typeStats" id="typeStats"></div><div class="foot">Выпадения считаются по сохранённым записям результатов. Если в одной серии выпало несколько героев, каждый результат нужно записать отдельно, чтобы статистика отражала их все.</div></div></section>
+<section class="section"><h2 class="sectitle">Добавить призывы</h2><div class="panel">
+<div class="field"><label for="shardSelect">Тип осколка</label><select id="shardSelect"><option value="ancient">Древние</option><option value="dark">Тёмные (Бездны)</option><option value="sacred">Сакральные</option><option value="primal">Первозданные</option></select></div>
+<div class="row"><div class="field"><label for="quantity">Количество открытых</label><input id="quantity" type="number" min="1" max="10000" value="1" inputmode="numeric"></div><div class="field"><label for="rarity">Результат призыва</label><select id="rarity"><option value="none">Без легендарного</option><option value="legendary">Легендарный</option><option value="mythical">Мифический</option></select></div></div><div class="field" id="positionField" hidden><label for="position">На каком по счёту осколке выпал герой?</label><input id="position" type="number" min="1" max="10000" value="1" inputmode="numeric"></div>
+<div class="notice" id="resultHint" style="margin-top:0">Укажи результат серии. Для точного учёта при нескольких открытиях за раз лучше добавлять отдельные записи по мере выпадения легендарного героя.</div>
+<button class="primary" id="addBtn">Сохранить призывы</button>
+</div></section>
+<section class="section"><h2 class="sectitle">История действий</h2><div class="panel"><div class="filters"><div><label class="small" for="historyType">Тип осколка</label><select id="historyType"><option value="all">Все типы</option><option value="ancient">Древние</option><option value="dark">Тёмные</option><option value="sacred">Сакральные</option><option value="primal">Первозданные</option></select></div><div><label class="small" for="historyRarity">Результат</label><select id="historyRarity"><option value="all">Все результаты</option><option value="none">Без легендарного/мифического</option><option value="legendary">Легендарный</option><option value="mythical">Мифический</option></select></div></div><div id="history" class="history"></div><div class="row" style="margin-top:10px"><button id="exportBtn" class="secondary">Скачать резервную копию</button><button id="importBtn" class="secondary">Восстановить копию</button><button id="resetBtn" class="secondary">Сбросить всё</button></div><input id="importFile" type="file" accept=".json,application/json" style="display:none"><div class="foot" id="backupStatus">Резервная копия включает счётчики и историю. Храни её вне браузера.</div></div></section>
+<div class="foot">Формулы используют базовые шансы без временных x2-событий: Древние/Тёмные — 0,5% и +5 п.п. после 200 призывов без легендарного; Сакральные — 6% и +2 п.п. после 12; Первозданные — легендарный 1% и +1 п.п. после 75, мифический 0,5% и +10 п.п. после 200. Прирост прибавляется к шансу напрямую и ограничивается 100%. Пороги Первозданных основаны на актуальном стороннем справочнике, так как официальная таблица Plarium не публикует их отдельно. Прототип не связан с игровым аккаунтом и не считывает данные из игры автоматически. Иконки стилизованные.</div>
+</main>
+<script>
+const TYPES={
+ ancient:{name:'Древние',desc:'Древний осколок',color:'#4da9ff',startLegendary:200,legendStep:5,baseLegendary:0.5},
+ dark:{name:'Тёмные',desc:'Осколок Бездны',color:'#a77cff',startLegendary:200,legendStep:5,baseLegendary:0.5},
+ sacred:{name:'Сакральные',desc:'Сакральный осколок',color:'#f2c85d',startLegendary:12,legendStep:2,baseLegendary:6},
+ primal:{name:'Первозданные',desc:'Первозданный осколок',color:'#ff684f',startLegendary:75,legendStep:1,baseLegendary:1, startMythical:200,mythicalStep:10,baseMythical:0.5}
+};
+const fresh=()=>({counts:Object.fromEntries(Object.keys(TYPES).map(k=>[k,{total:0,withoutLegendary:0,withoutMythical:0}])),history:[]});
+let state;
+try{state=JSON.parse(localStorage.getItem('shardTrackerState'))||fresh()}catch(e){state=fresh()}
+// Мягкая миграция данных из предыдущей версии прототипа.
+for(const k of Object.keys(TYPES)){
+ if(!state.counts) state.counts={};
+ if(!state.counts[k]) state.counts[k]={total:0,withoutLegendary:0,withoutMythical:0};
+ const c=state.counts[k];
+ if(typeof c.withoutLegendary!=='number') c.withoutLegendary=0;
+ if(typeof c.withoutMythical!=='number') c.withoutMythical=0;
+ if(typeof c.total!=='number') c.total=0;
+ delete c.withoutEpic;
+}
+if(!Array.isArray(state.history)) state.history=[];
+function save(){localStorage.setItem('shardTrackerState',JSON.stringify(state));render()}
+function icon(type){
+ const commonStart=`<svg class="shard" viewBox="0 0 64 72" aria-hidden="true">`;
+ const icons={
+ ancient:`<defs><linearGradient id="ancientG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8f8ff"/><stop offset=".25" stop-color="#69caff"/><stop offset=".65" stop-color="#2679df"/><stop offset="1" stop-color="#142f78"/></linearGradient></defs><path d="M22 4 43 8 57 28 50 52 34 68 13 56 5 32 12 13Z" fill="url(#ancientG)" stroke="#a8e5ff" stroke-width="1.4"/><path d="M22 4 28 31 12 13M43 8 28 31 57 28M28 31 5 32M28 31 34 68M28 31 50 52 57 28" fill="none" stroke="#f4fdff" stroke-opacity=".68" stroke-width="1.2"/><path d="M22 4 28 31 43 8Z" fill="#fff" fill-opacity=".38"/>`,
+ dark:`<defs><linearGradient id="darkG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4e6ff"/><stop offset=".23" stop-color="#c28cff"/><stop offset=".62" stop-color="#7438c8"/><stop offset="1" stop-color="#26134f"/></linearGradient></defs><path d="M17 5 42 7 57 24 53 48 35 67 12 58 5 35 9 16Z" fill="url(#darkG)" stroke="#e0baff" stroke-width="1.4"/><path d="M17 5 29 30 9 16M42 7 29 30 57 24M29 30 5 35M29 30 35 67M29 30 53 48 57 24" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="1.2"/><path d="M17 5 29 30 42 7Z" fill="#fff" fill-opacity=".38"/>`,
+ sacred:`<defs><linearGradient id="sacredG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8c9"/><stop offset=".25" stop-color="#ffe778"/><stop offset=".62" stop-color="#e8a82f"/><stop offset="1" stop-color="#8e4c19"/></linearGradient></defs><path d="M24 3 45 11 58 31 48 54 32 68 14 56 6 33 12 14Z" fill="url(#sacredG)" stroke="#fff0a0" stroke-width="1.4"/><path d="M24 3 30 32 12 14M45 11 30 32 58 31M30 32 6 33M30 32 32 68M30 32 48 54 58 31" fill="none" stroke="#fffde4" stroke-opacity=".7" stroke-width="1.2"/><path d="M24 3 30 32 45 11Z" fill="#fff" fill-opacity=".45"/>`,
+ primal:`<defs><linearGradient id="primalG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0ce"/><stop offset=".22" stop-color="#ff9a58"/><stop offset=".58" stop-color="#ef4b3e"/><stop offset="1" stop-color="#79233c"/></linearGradient></defs><path d="M19 4 44 9 58 29 49 52 32 68 12 57 5 34 10 15Z" fill="url(#primalG)" stroke="#ffc08c" stroke-width="1.4"/><path d="M19 4 29 31 10 15M44 9 29 31 58 29M29 31 5 34M29 31 32 68M29 31 49 52 58 29" fill="none" stroke="#fff4e4" stroke-opacity=".7" stroke-width="1.2"/><path d="M19 4 29 31 44 9Z" fill="#fff" fill-opacity=".42"/>`
+ };
+ return commonStart+`<defs><filter id="glow${type}"><feGaussianBlur stdDeviation="1.4"/></filter></defs>`+icons[type]+'</svg>';
+}
+function chance(type,rarity){
+ const t=TYPES[type],c=state.counts[type];
+ let base,threshold,step,misses;
+ if(rarity==='mythical') {base=t.baseMythical;threshold=t.startMythical;step=t.mythicalStep;misses=c.withoutMythical;}
+ else {base=t.baseLegendary;threshold=t.startLegendary;step=t.legendStep;misses=c.withoutLegendary;}
+ if(base==null)return null;
+ // misses — число подряд открытых осколков этого типа без героя нужной редкости.
+ // Если порог уже достигнут, следующий призыв получает первый шаг Mercy: например,
+ // 200 неудачных Древних -> следующий шанс 0,5% + 5 п.п. = 5,5%.
+ // Прибавка аддитивная (в процентных пунктах), шанс ограничен диапазоном 0–100%.
+ const extra=misses>=threshold?(misses-threshold+1)*step:0;
+ return Math.min(100,base+extra);
+}
+function fmtChance(v){return v==null?'—':`${Number.isInteger(v)?v:v.toFixed(1).replace('.',',')}%`}
+function mercyText(type,rarity='legendary'){
+ const t=TYPES[type],c=state.counts[type],threshold=rarity==='mythical'?t.startMythical:t.startLegendary;
+ if(threshold==null)return 'Нет Mercy';
+ const misses=rarity==='mythical'?c.withoutMythical:c.withoutLegendary;
+ const left=Math.max(0,threshold-misses);
+ return left>0?`${left} до роста шанса`:'Mercy активна';
+}
+function render(){
+ updatePositionField();
+ const cards=document.getElementById('cards');
+ cards.innerHTML=Object.keys(TYPES).map(k=>{
+  const t=TYPES[k],c=state.counts[k],progress=Math.min(100,c.withoutLegendary/t.startLegendary*100);
+  const progressBar=(label,misses,threshold,color)=>`<div class="progresslabel"><span>${label}</span><span>${misses}/${threshold}</span></div><div class="progressline"><div class="fill" style="background:${color};width:${Math.min(100,misses/threshold*100)}%"></div></div>`;
+  let stats='';
+  if(k==='primal'){
+   stats=`<div class="stat"><label>Без легендарного · шанс следующего</label><strong>${c.withoutLegendary} · ${fmtChance(chance(k,'legendary'))}</strong><div class="small">${mercyText(k,'legendary')}</div></div><div class="stat"><label>Без мифического · шанс следующего</label><strong>${c.withoutMythical} · ${fmtChance(chance(k,'mythical'))}</strong><div class="small">${mercyText(k,'mythical')}</div></div>`;
+  } else {
+   stats=`<div class="stat"><label>Без легендарного</label><strong>${c.withoutLegendary}</strong></div><div class="stat"><label>Шанс легендарного</label><strong>${fmtChance(chance(k,'legendary'))}</strong><div class="small">${mercyText(k)}</div></div>`;
+  }
+  const bars=k==='primal'?progressBar('До роста шанса легендарного',c.withoutLegendary,t.startLegendary,t.color)+progressBar('До роста шанса мифического',c.withoutMythical,t.startMythical,'#d5a2ff'):progressBar('До роста шанса Mercy',c.withoutLegendary,t.startLegendary,t.color);
+  return `<article class="card"><div class="cardtop">${icon(k)}<div><div class="name">${t.name}</div><div class="type">${t.desc}</div></div><div class="total"><div class="num">${c.total}</div><div class="small">всего открыто</div></div></div>${bars}<div class="stats">${stats}</div><div class="actions"><button class="plus" onclick="quick('${k}')">＋ Открытие</button><button class="batch" onclick="batch('${k}')">Количество…</button></div></article>`
+ }).join('');
+ updateRarityOptions();
+ const total=Object.values(state.counts).reduce((sum,c)=>sum+c.total,0);
+ const legendary=state.history.filter(e=>e.rarity==='legendary').length;
+ const mythical=state.history.filter(e=>e.rarity==='mythical').length;
+ document.getElementById('overview').innerHTML=`<div class="stat"><label>Всего осколков открыто</label><strong>${total.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Записей с легендарным</label><strong>${legendary.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Записей с мифическим</label><strong>${mythical.toLocaleString('ru-RU')}</strong></div><div class="stat"><label>Всего записей в истории</label><strong>${state.history.length.toLocaleString('ru-RU')}</strong></div>`;
+ document.getElementById('typeStats').innerHTML=Object.keys(TYPES).map(k=>{const c=state.counts[k],lh=state.history.filter(e=>e.type===k&&e.rarity==='legendary').length,mh=state.history.filter(e=>e.type===k&&e.rarity==='mythical').length;return `<div class="typeStat"><strong>${TYPES[k].name}</strong><small>Открыто: ${c.total.toLocaleString('ru-RU')}<br>Без легендарного: ${c.withoutLegendary.toLocaleString('ru-RU')}<br>Записей с легендарным: ${lh}${k==='primal'?`<br>Без мифического: ${c.withoutMythical.toLocaleString('ru-RU')}<br>Записей с мифическим: ${mh}`:''}</small></div>`}).join('');
+ const h=document.getElementById('history');
+ if(!state.history.length){h.innerHTML='<div class="empty">Пока нет действий. Добавь первые призывы выше.</div>';return}
+ const typeFilter=document.getElementById('historyType').value,rarityFilter=document.getElementById('historyRarity').value;
+ const filtered=state.history.filter(e=>(typeFilter==='all'||e.type===typeFilter)&&(rarityFilter==='all'||e.rarity===rarityFilter));
+ if(!filtered.length){h.innerHTML='<div class="empty">По выбранным фильтрам записей нет.</div>';return}
+ h.innerHTML=filtered.slice(0,30).map(e=>`<div class="event"><div class="eventmain"><strong>${TYPES[e.type].name}: +${e.qty}</strong><small>${new Date(e.time).toLocaleString('ru-RU')} · результат: ${labelRarity(e.rarity)}${e.position&&e.rarity!=='none'&&e.qty>1?` · выпадение на ${e.position}-м`:''}</small></div><button class="undo" onclick="undo('${e.id}')">Отменить</button></div>`).join('');
+}
+function updateRarityOptions(){
+ const type=document.getElementById('shardSelect').value,sel=document.getElementById('rarity'),current=sel.value;
+ const opts=type==='primal'?[['none','Без легендарного/мифического'],['legendary','Легендарный'],['mythical','Мифический']]:[['none','Без легендарного'],['legendary','Легендарный']];
+ sel.innerHTML=opts.map(([v,l])=>`<option value="${v}">${l}</option>`).join('');
+ if(opts.some(([v])=>v===current))sel.value=current;
+ document.getElementById('resultHint').textContent=(type==='primal'?'Для Первозданных отдельно учитываются легендарные и мифические результаты. ':'Учитываются только легендарные результаты. ')+ 'Если герой выпал внутри серии, укажи его порядковый номер — счётчики Mercy будут рассчитаны точнее.';
+ updatePositionField();
+}
+function labelRarity(r){return ({none:'без легендарного/мифического',legendary:'легендарный',mythical:'мифический'})[r]||r}
+function updatePositionField(){
+ const qty=Math.max(1,Math.floor(Number(document.getElementById('quantity').value)||1));
+ const rarity=document.getElementById('rarity').value;
+ const field=document.getElementById('positionField');
+ field.hidden=!(qty>1&&rarity!=='none');
+ const input=document.getElementById('position');input.max=String(qty);
+ if(Number(input.value)>qty)input.value=qty;
+}
+function applyResult(c,type,qty,rarity,position){
+ qty=Math.max(1,Math.min(10000,Math.floor(Number(qty)||1)));
+ position=Math.max(1,Math.min(qty,Math.floor(Number(position)||qty)));
+ c.total+=qty;
+ if(type==='primal'){
+  if(rarity==='legendary'){c.withoutLegendary=qty-position;c.withoutMythical+=qty}
+  else if(rarity==='mythical'){c.withoutMythical=qty-position;c.withoutLegendary+=qty}
+  else {c.withoutLegendary+=qty;c.withoutMythical+=qty}
+ }else{
+  if(rarity==='legendary')c.withoutLegendary=qty-position;
+  else c.withoutLegendary+=qty;
+ }
+ return c;
+}
+function add(type,qty,rarity,position){
+ qty=Math.max(1,Math.min(10000,Math.floor(Number(qty)||1)));
+ position=Math.max(1,Math.min(qty,Math.floor(Number(position)||qty)));
+ const c=state.counts[type],before={...c};
+ applyResult(c,type,qty,rarity,position);
+ state.history.unshift({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),type,qty,rarity,position,time:Date.now(),before,after:{...c}});save()
+}
+function quick(type){document.getElementById('shardSelect').value=type;updateRarityOptions();document.getElementById('quantity').value=1;document.getElementById('rarity').value='none';document.querySelector('.section').scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('quantity').focus()}
+function batch(type){document.getElementById('shardSelect').value=type;updateRarityOptions();document.querySelector('.section').scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('quantity').focus()}
+function undo(id){
+ const idx=state.history.findIndex(e=>e.id===id);if(idx<0)return;
+ // Восстанавливаем базовое состояние, отменяя записи от новых к старым.
+ const baseline=JSON.parse(JSON.stringify(state.counts));
+ for(const e of state.history){if(e.before)baseline[e.type]={...e.before};}
+ state.history.splice(idx,1);
+ const chronological=[...state.history].sort((a,b)=>a.time-b.time);
+ const counts=baseline;
+ for(const e of chronological){
+  e.before={...counts[e.type]};
+  applyResult(counts[e.type],e.type,e.qty,e.rarity,e.position||e.qty);
+  e.after={...counts[e.type]};
+ }
+ state.counts=counts;save();
+}
+document.getElementById('historyType').addEventListener('change',render);
+document.getElementById('historyRarity').addEventListener('change',render);
+document.getElementById('shardSelect').addEventListener('change',updateRarityOptions);
+document.getElementById('quantity').addEventListener('input',updatePositionField);
+document.getElementById('rarity').addEventListener('change',updatePositionField);
+document.getElementById('addBtn').addEventListener('click',()=>{const type=document.getElementById('shardSelect').value,qty=document.getElementById('quantity').value,rarity=document.getElementById('rarity').value,position=document.getElementById('position').value;add(type,qty,rarity,position);document.getElementById('quantity').value=1;document.getElementById('rarity').value='none';document.getElementById('position').value=1;updatePositionField()});
+function normalizedState(raw){
+ const source=raw&&raw.state?raw.state:raw;
+ if(!source||typeof source!=='object'||!source.counts||typeof source.counts!=='object')throw new Error('В файле не найдены счётчики Shard Tracker.');
+ const out=fresh();
+ for(const k of Object.keys(TYPES)){
+  const c=source.counts[k];
+  if(c&&typeof c==='object'){
+   for(const field of ['total','withoutLegendary','withoutMythical']){
+    const n=Number(c[field]??0);if(!Number.isFinite(n)||n<0)throw new Error('В резервной копии есть некорректный счётчик.');
+    out.counts[k][field]=Math.floor(n);
+   }
+  }
+ }
+ if(source.history!==undefined&&!Array.isArray(source.history))throw new Error('История в резервной копии имеет неверный формат.');
+ out.history=(source.history||[]).filter(e=>e&&TYPES[e.type]&&Number.isFinite(Number(e.qty))&&Number(e.qty)>=1&&['none','legendary','mythical'].includes(e.rarity)).map(e=>({
+  id:String(e.id||Date.now().toString(36)+Math.random().toString(36).slice(2,6)),type:e.type,qty:Math.min(10000,Math.floor(Number(e.qty))),rarity:e.rarity,position:Math.max(1,Math.min(Math.floor(Number(e.qty)),Math.floor(Number(e.position)||Number(e.qty)))),time:Number(e.time)||Date.now(),before:e.before&&typeof e.before==='object'?e.before:undefined,after:e.after&&typeof e.after==='object'?e.after:undefined
+ }));
+ return out;
+}
+document.getElementById('exportBtn').addEventListener('click',()=>{
+ const backup={app:'Shard Tracker',version:'0.8',exportedAt:new Date().toISOString(),state};
+ const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='shard-tracker-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ document.getElementById('backupStatus').textContent='Резервная копия сформирована. Сохрани файл в отдельном месте.';
+});
+document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change',async ev=>{
+ const file=ev.target.files&&ev.target.files[0];if(!file)return;
+ try{
+  const parsed=JSON.parse(await file.text());const restored=normalizedState(parsed);
+  if(!confirm(`Восстановить резервную копию? Текущие счётчики и история будут заменены. В файле записей истории: ${restored.history.length}.`))return;
+  state=restored;save();document.getElementById('backupStatus').textContent='Резервная копия успешно восстановлена.';
+ }catch(err){alert('Не удалось восстановить копию: '+(err.message||'неверный формат файла'));}
+ finally{ev.target.value='';}
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('Удалить все счётчики и историю? Сначала можно скачать резервную копию.')){state=fresh();save();document.getElementById('backupStatus').textContent='Данные сброшены.'}});
+updateRarityOptions();save();
+</script><script>
+// Регистрация офлайн-кэша доступна только на localhost или HTTPS.
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+ window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
+}
+</script></body></html>
