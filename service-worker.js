@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shard-tracker-v1.0';
+const CACHE_NAME = 'shard-tracker-v1.1';
 const APP_FILES = [
   './',
   './index.html',

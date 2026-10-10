@@ -4,7 +4,7 @@
   "short_name": "Shard Tracker",
   "description": "Трекер осколков и Mercy для RAID: Shadow Legends",
   "lang": "ru",
-  "start_url": "./index.html",
+  "start_url": "./index.html?v=1.1",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
